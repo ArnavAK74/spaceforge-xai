@@ -1,0 +1,19 @@
+# minimal effusion sandbox (no surfaces / no dumps)
+units              si
+seed               2025
+dimension          3
+boundary           o o o
+
+create_box         -0.25 0.25  -0.25 0.25  -0.5 0.5
+create_grid        10 10 20
+
+species            data/ar.species Ar
+mixture            jet Ar temp 300.0 vstream 0.0 0.0 300.0
+collide            none
+
+create_particles   jet n 15000
+
+stats              100
+
+variable           block equal 2000
+run                ${block}
